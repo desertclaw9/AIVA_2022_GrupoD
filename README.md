@@ -16,7 +16,7 @@
 
 ![product-screenshot](./resources/tienda.png)
 
-Un cliente tiene una cámara apuntando a la puerta de su tienda y desea obtener unas estadísticas. Nos pide obtenerlas y para ello vamos a intentar resolver el problema gracias a inteligencia artificial, en concreto visión por computador al trabajar sobre imagenes.
+Un cliente tiene una cámara apuntando a la puerta de su tienda y desea obtener unas estadísticas. Nos pide obtenerlas y para ello vamos a intentar resolver el problema gracias a inteligencia artificial, en concreto visión por computador al trabajar sobre imágenes.
 
 Las estadísticas a obtener son:
 * Cuantas personas entran y salen
@@ -56,8 +56,21 @@ TO DO
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/desertclaw9/AIVA_2022_GrupoD.git
    ```
+   
+ 2. Create virtual enviroment
+    ```sh
+    cd AIVA_2022_GrupoD
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install --upgrade pip
+     ```
+
+ 3. Install requirements
+     ```sh
+     pip install -r requirements.txt
+     ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -73,12 +86,13 @@ TO DO
 
 - [x] Tarea 1: Requisitos
   - [x] Captura de requisitos
-  - [x] Pruebas Unitarias
   - [x] Creación de Github
+  - [x] Mockup sistema
+  - [x] Pruebas Unitarias
 - [ ] Tarea 2: Piloto
-    - [ ] Creación primer diseño
-    - [ ] Documentación
-    - [ ] Pruebas unitarias
+  - [ ] Creación primer diseño
+  - [ ] Documentación
+  - [ ] Pruebas unitarias
 - [ ] Tarea 3: Resultados
   - [ ] Desarrollo aplicación  
   - [ ] SonarQube
@@ -95,9 +109,9 @@ Ver [issues abiertos](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) pa
 
 Ignacio García-Siñeriz Sánchez - i.garciasan.2021@alumnos.urjc.es
 
-Carlos Sabater Nicolás -
+Carlos Sabater Nicolás - c.sabater.2021@alumnos.urjc.es
 
-Alonso 
+Alonso Cerrato Nieto - a.cerrato.2021@alumnos.urjc.es
 
 Project Link: [https://github.com/desertclaw9/AIVA_2022_GrupoD](https://github.com/desertclaw9/AIVA_2022_GrupoD)
 
