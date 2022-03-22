@@ -1,9 +1,11 @@
+import tensorflow as tf
 
 
 class Model:
     """
     Defines Tensorflow model to detect people. Consist on a YOLOv5 pretrained.
     """
+
     def __init__(self):
         print('TODO')
 

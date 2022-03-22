@@ -6,10 +6,17 @@ class Count:
     def __init__(self):
         print('TODO')
 
-    def ocurrence(self):
+    def add_ocurrence(self):
         """
         Detects a change of intensity and counts on its ROI counter
         :return: None
+        """
+        print('TODO')
+
+    def ocurrences(self):
+        """
+        Counts ocurrences
+        :return: number of ocurrences detected
         """
         print('TODO')
 
