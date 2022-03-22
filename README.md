@@ -3,12 +3,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">AIVA 2022 - Grupo D</h3>
+  <h1 align="center">AIVA 2022 - Grupo D</h1>
 
-  <p align="center">
+  <h3 align="center">
     Control de visitantes de una tienda 
     <br />
-  </p>
+  </h3>
 </div>
 
 <!-- ABOUT THE PROJECT -->
