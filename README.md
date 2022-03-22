@@ -77,9 +77,12 @@ TO DO
   - [x] Creación de Github
 - [ ] Tarea 2: Piloto
     - [ ] Creación primer diseño
+    - [ ] Documentación
+    - [ ] Pruebas unitarias
 - [ ] Tarea 3: Resultados
   - [ ] Desarrollo aplicación  
   - [ ] SonarQube
+- [ ] Tarea 4: Presentación
 
 Ver [issues abiertos](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) para una lista de todos los issues 
 
@@ -91,6 +94,10 @@ Ver [issues abiertos](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) pa
 ## Contacto
 
 Ignacio García-Siñeriz Sánchez - i.garciasan.2021@alumnos.urjc.es
+
+Carlos Sabater Nicolás -
+
+Alonso 
 
 Project Link: [https://github.com/desertclaw9/AIVA_2022_GrupoD](https://github.com/desertclaw9/AIVA_2022_GrupoD)
 
