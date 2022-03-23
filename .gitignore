@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#resource
+*.mpg
+
+#pycharm
+.idea/
