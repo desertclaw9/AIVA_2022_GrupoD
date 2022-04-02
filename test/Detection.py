@@ -1,5 +1,5 @@
 import unittest
-from src.detection import Model, Dataset
+from src.detection import Detection, Dataset
 import numpy as np
 import tensorflow as tf
 
