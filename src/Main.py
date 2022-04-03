@@ -1,7 +1,7 @@
 import cv2
 
-from src.detection.Detection import Detection
-import src.tools.Tools as tl
+from src.Detection import Detection
+import src.Tools as tl
 
 
 class ControlVisitantes:
@@ -18,7 +18,7 @@ class ControlVisitantes:
         :return: None
         """
         detector = Detection()
-        for file, im in tl.load_video('dataset_2/EnterExitCrossingPaths1front.mpg'):
+        for file, im in tl.load_video('dataset_2/OneShopOneWait1front.mpg'):
             im, feets = detector.detect(im, paint=True)
             cv2.imshow('frame', im)
             if cv2.waitKey(1) & 0xFF == ord('q'):

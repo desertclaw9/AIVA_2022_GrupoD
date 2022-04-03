@@ -1,6 +1,4 @@
-import unittest
-from src.detection import Detection, Dataset
-import numpy as np
+from src.detection import Dataset
 import tensorflow as tf
 
 
