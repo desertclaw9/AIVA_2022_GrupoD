@@ -1,5 +1,4 @@
 import unittest
-from src.tools import LoadData
 import numpy as np
 
 
