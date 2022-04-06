@@ -38,7 +38,7 @@ Las estadísticas a obtener son:
 ### Hecho con
 
 * [OpenCV](https://opencv.org/)
-* [Tensorflow](https://www.tensorflow.org/)
+* [PyTorch](https://pytorch.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -47,19 +47,15 @@ Las estadísticas a obtener son:
 <!-- GETTING STARTED -->
 ## Primeros pasos
 
-TO DO
-
-### Pre-requisitos
-
 
 ### Instalación
 
-1. Clone the repo
+1. Clonar el repo
    ```sh
    git clone https://github.com/desertclaw9/AIVA_2022_GrupoD.git
    ```
    
- 2. Create virtual enviroment
+ 2. Crear virtual environment (probado sobre python3.8)
     ```sh
     cd AIVA_2022_GrupoD
     python3 -m venv venv
@@ -67,7 +63,7 @@ TO DO
     pip install --upgrade pip
      ```
 
- 3. Install requirements
+ 3. Instalar requirements
      ```sh
      pip install -r requirements.txt
      ```
@@ -75,11 +71,26 @@ TO DO
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- USAGE EXAMPLES -->
-## Uso
+### Uso
+Para usar la aplicación ejecutar el siguiente comando:
+```sh
+python3 src/Main.py
+```
+Se empezarán a procesar los videos y mostrar el resultado por pantalla. Para controlar el flujo de archivos,
+pulsar 'n' para ir al siguiente video y pulsar 'q' para salir. 
 
-TO DO
+Al terminar cada video se imprimirá por consola las estadísticas requeridas por la aplicación.
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Testing
+Para ejecutar todos los test, ejecutar el siguiente comando:
+```sh
+python3 -m unittest discover
+```
+Se recomienda usar un visualizador de unittest como el de pycharm para una visualización más cómoda.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -89,16 +100,16 @@ TO DO
   - [x] Creación de Github
   - [x] Mockup sistema
   - [x] Pruebas Unitarias
-- [ ] Tarea 2: Piloto
-  - [ ] Creación primer diseño
-  - [ ] Documentación
-  - [ ] Pruebas unitarias
+- [x] Tarea 2: Piloto
+  - [x] Creación primer diseño
+  - [x] Documentación
+  - [x] Pruebas unitarias
 - [ ] Tarea 3: Resultados
   - [ ] Desarrollo aplicación  
   - [ ] SonarQube
 - [ ] Tarea 4: Presentación
 
-Ver [issues abiertos](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) para una lista de todos los issues 
+Ver [issues](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) para una lista de todos los issues. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
