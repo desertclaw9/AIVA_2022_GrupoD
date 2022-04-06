@@ -1,20 +1,22 @@
-from src.detection import Dataset
-import tensorflow as tf
+from src.Detection import Detection
+import unittest
+import src.Tools as tl
+import pandas as pd
 
 
-class DetectionTest(tf.test.TestCase):
-    def test_ouput_size(self):
-        shape = (1, 17)
-        model = Model.Model()
-        image = model.predict()
-        self.assertEqual(image.shape, shape)
+class DetectionTest(unittest.TestCase):
+    def setUp(self):
+        self.detector = Detection()
+        self.frames = tl.load_video('dataset_2/OneLeaveShop1front.mpg')
 
-    def test_dataset(self):
-        dataset = Dataset.Dataset()
-        train = dataset.get_train().cardinality().numpy()
-        test = dataset.get_test().cardinality().numpy()
-        val = dataset.get_val().cardinality().numpy()
-        total = train + test + val
-        self.assertEqual(train, total * 0.70)
-        self.assertEqual(test, total * 0.2)
-        self.assertEqual(val, total * 0.1)
+    def test_ouput_type(self):
+        file, im = next(self.frames)
+        im, pd_res = self.detector.predict(im, paint=False)
+        self.assertEqual(type(pd_res), pd.DataFrame)
+
+    def test_output(self):
+        lenght = 0
+        for file, im in self.frames:
+            im, pd_res = self.detector.predict(im, paint=False)
+            lenght += pd_res.size
+        self.assertGreater(lenght, 1)

@@ -1,9 +1,8 @@
 import unittest
-import numpy as np
+import src.Tools as tl
 
 
 class ToolsTest(unittest.TestCase):
     def test_load_data(self):
-        loader = LoadData.LoadData()
-        frame = loader.get_frame()
-        self.assertEqual(frame, np.array([1, 1, 1, 1]))
+        for file, im in tl.load_video('dataset_2/OneLeaveShop1front.mpg'):
+            self.assertIsNotNone(im)
