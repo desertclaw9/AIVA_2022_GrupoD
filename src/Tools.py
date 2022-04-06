@@ -1,4 +1,5 @@
-import os, cv2
+import cv2
+import os
 
 
 def load_video(file):
@@ -9,14 +10,15 @@ def load_video(file):
     cap = cv2.VideoCapture(file)
     while True:
         ret, im = cap.read()
-        h, w, dim = im.shape
-        if ret:
-            cv2.line(im, (round(w / 2) + 20, round(h / 2) + 5), (w - 20, round(h / 2) + 5), (0, 255, 255), 2)
-            cv2.line(im, (round(w / 2) + 20, round(h / 2) + 60), (round(w / 2) + 20, round(h / 2) + 5),(0, 255, 255), 2)
-            cv2.line(im, (60, round(h / 2) + 60), (60, round(h / 2) + 5), (0, 255, 255), 2)
         if not ret:
             print('End of video')
             break
+        else:
+            h, w, dim = im.shape
+            cv2.line(im, (round(w / 2) + 20, round(h / 2) + 5), (w - 20, round(h / 2) + 5), (0, 255, 255), 2)
+            cv2.line(im, (round(w / 2) + 20, round(h / 2) + 60), (round(w / 2) + 20, round(h / 2) + 5), (0, 255, 255),
+                     2)
+            cv2.line(im, (60, round(h / 2) + 60), (60, round(h / 2) + 5), (0, 255, 255), 2)
         yield file, im
 
 
