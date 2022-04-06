@@ -27,7 +27,7 @@ def main():
             elif key == ord('q'):
                 finish = True
                 break
-        controller.results(path)
+        print('Entran %d\nSalen %d\nPasan %d\nEscaparate %d' % controller.results())
         if finish:
             exit(0)
 

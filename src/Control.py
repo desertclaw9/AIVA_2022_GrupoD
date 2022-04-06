@@ -82,17 +82,18 @@ class Control:
     def update(self, inputCentroids):
         self.objects = self.centroid_tracker.update(inputCentroids)
 
-    def results(self, path):
+    def results(self):
         entran = self.totalUp
         salen = self.totalDown
         pasan = self.totalLeft - (entran + salen) if self.totalLeft - (entran + salen) > 0 else 0
         tienda = 0  # TODO
 
-        print('Entran %d\nSalen %d\nPasan %d\nEscaparate %d' % (entran, salen, pasan, tienda))
         self.totalLeft = 0
         self.totalUp = 0
         self.totalRight = 0
         self.totalDown = 0
+
+        return entran, salen, pasan, tienda
 
 
 class TrackableObject:
