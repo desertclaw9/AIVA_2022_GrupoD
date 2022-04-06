@@ -90,3 +90,7 @@ class Control:
         tienda = 0  # TODO
         print('[' + path + ']')
         print('Entran %d\nSalen %d\nPasan %d\nEscaparate %d' % (entran, salen, pasan, tienda))
+        self.totalLeft = 0
+        self.totalUp = 0
+        self.totalRight = 0
+        self.totalDown = 0
