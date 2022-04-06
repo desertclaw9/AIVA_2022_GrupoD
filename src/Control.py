@@ -1,5 +1,4 @@
 from src.Centroidtracking import CentroidTracking
-from src.Trackableobject import TrackableObject
 import numpy as np
 import cv2
 
@@ -88,9 +87,19 @@ class Control:
         salen = self.totalDown
         pasan = self.totalLeft - (entran + salen) if self.totalLeft - (entran + salen) > 0 else 0
         tienda = 0  # TODO
-        print('[' + path + ']')
+
         print('Entran %d\nSalen %d\nPasan %d\nEscaparate %d' % (entran, salen, pasan, tienda))
         self.totalLeft = 0
         self.totalUp = 0
         self.totalRight = 0
         self.totalDown = 0
+
+
+class TrackableObject:
+    """
+    Defines the attributes of an object, objectID, centroid and if it has been counted or not
+    """
+    def __init__(self, objectID, centroid):
+        self.objectID = objectID
+        self.centroids = [centroid]
+        self.counted = False

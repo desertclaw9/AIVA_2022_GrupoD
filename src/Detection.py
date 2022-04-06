@@ -19,15 +19,17 @@ class Detection:
         """
         self.model = torch.hub.load('ultralytics/yolov5', model)
 
-    def predict(self, im, paint):
+    def predict(self, im, paint, print=False):
         """
         Predicts input data
+        :param print: print info from model or not
         :param im: input image
         :param paint: boolean if result is painted on im or not
         :return: resulting image and pandas dataframe with output info of Persons bounding box
         """
         results = self.model(im)
-        results.print()
+        if print:
+            results.print()
         results_pd = results.pandas().xyxy[0]
         results_pd = results_pd[results_pd['class'] == 0]
         if paint:
