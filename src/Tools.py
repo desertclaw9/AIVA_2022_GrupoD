@@ -28,7 +28,7 @@ def load_folder(path):
     :return: a list of video paths
     """
     for file in os.listdir(path):
-        yield load_video(os.path.join(path, file))
+        yield file
 
 
 def paint_rectangle(im, pd_results):
