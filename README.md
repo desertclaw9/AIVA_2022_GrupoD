@@ -119,10 +119,12 @@ docker run --name=ControlVisitantes -v <<path>>:/app/dataset_2 -e PYTHONUNBUFFER
   - [x] Creación primer diseño
   - [x] Documentación
   - [x] Pruebas unitarias
-- [ ] Tarea 3: Resultados
-  - [ ] Desarrollo aplicación  
-  - [ ] SonarQube
+- [x] Tarea 3: Resultados
+  - [x] Integración aplicación
+  - [x] Despliegue  
+  - [x] Documentación 
 - [ ] Tarea 4: Presentación
+  - [ ] SonarQube
 
 Ver [issues](https://github.com/desertclaw9/AIVA_2022_GrupoD/issues) para una lista de todos los issues. 
 
