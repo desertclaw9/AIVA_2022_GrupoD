@@ -1,4 +1,4 @@
-from src.Centroidtracking import CentroidTracking
+from Centroidtracking import CentroidTracking
 import numpy as np
 import cv2
 
@@ -9,6 +9,9 @@ class Control:
         self.totalUp = 0
         self.totalRight = 0
         self.totalLeft = 0
+        self.totalLeft2 = 0
+        self.totalRight2 = 0
+        self.stop = 0
         self.trackers = []
         self.trackableObjects = {}
         self.centroid_tracker = CentroidTracking(maxDisappeared=maxDisappeared, maxDistance=maxDistance)
@@ -22,7 +25,6 @@ class Control:
         :param frame: frame to process
         :return:
         """
-
         height = frame.shape[0]
         width = frame.shape[1]
         if self.objects is None:
@@ -46,21 +48,47 @@ class Control:
                 x_direction = centroid[0] - np.mean(x)
                 trck_obj.centroids.append(centroid)
                 # Check to see if the object has been counted or not
-                if not trck_obj.counted:
-                    # If the direction is negative (indicating the object is moving up) AND the centroid is above the center
-                    # line, count the object
-                    if y_direction < 0 and round(height / 2) - 5 < centroid[1] < round(height / 2) + 5:
-                        self.totalUp += 1
-                        trck_obj.counted = True
-                    elif y_direction > 0 and round(height / 2) - 5 < centroid[1] < round(height / 2) + 5:
-                        self.totalDown += 1
-                        trck_obj.counted = True
-                    elif x_direction > 0 and round(width / 2) < centroid[0] < round(width / 2) + 40:
-                        self.totalRight += 1
-                        trck_obj.counted = True
-                    elif x_direction < 0 and round(width / 2) < centroid[0] < round(width / 2) + 40:
-                        self.totalLeft += 1
-                        trck_obj.counted = True
+                # if not trck_obj.counted or trck_obj.counted:
+                # If the direction is negative (indicating the object is moving up) AND the centroid is above the center
+                # line, count the object
+                if not trck_obj.upCounted and y_direction < 0 and (round(height / 2) - 5) - 5 < centroid[1] < (
+                        round(height / 2) - 5) + 5:
+                    self.totalUp += 1
+                    trck_obj.upCounted = True
+                elif not trck_obj.downCounted and y_direction > 0 and (round(height / 2) - 5) - 5 < centroid[1] < (
+                        round(height / 2) - 5) + 5:
+                    self.totalDown += 1
+                    trck_obj.downCounted = True
+                elif not trck_obj.rightCounted and x_direction > 0 and round(width / 2) < centroid[0] < round(
+                        width / 2) + 20:
+                    self.totalRight += 1
+                    trck_obj.rightCounted = True
+                elif not trck_obj.leftCounted and x_direction < 0 and round(width / 2) < centroid[0] < round(
+                        width / 2) + 35:
+                    self.totalLeft += 1
+                    trck_obj.leftCounted = True
+                    trck_obj.frameCount = 0
+                elif not trck_obj.secondLeftCounted and x_direction < 0 and 40 < centroid[0] < 80:
+                    trck_obj.secondLeftCounted = True
+                    self.totalLeft2 += 1
+                elif not trck_obj.secondLeftCounted and x_direction > 0 and 40 < centroid[0] < 80:
+                    trck_obj.secondRightCounted = True
+                    self.totalRight2 += 1
+
+                trck_obj.frameCount += 1
+
+                if not trck_obj.stopped and trck_obj.leftCounted and not trck_obj.secondLeftCounted and trck_obj.frameCount > 140:
+                    self.stop += 1
+                    trck_obj.stopped = True
+                    trck_obj.frameCount = 0
+
+                if not trck_obj.stopped and not trck_obj.rightCounted and trck_obj.secondRightCounted and trck_obj.frameCount > 140:
+                    self.stop += 1
+                    trck_obj.stopped = True
+                    trck_obj.frameCount = 0
+
+                # if trck_obj.leftCounted and not trck_obj.secondleftCounted:
+                # trck_obj.frameCount = 0
 
             # Store the trackable object in the dictionary
             self.trackableObjects[objectID] = trck_obj
@@ -68,16 +96,19 @@ class Control:
         if display:
             # Information that will be displayed on the frame
             info = [
+                ("Stop", self.stop),
                 ("Up", self.totalUp),
                 ("Down", self.totalDown),
                 ("Right", self.totalRight),
                 ("Left", self.totalLeft)
+                #("2LinetoLeft", self.totalLeft2),
+                #("1LinetoRight", self.totalRight2)
             ]
             # Draw the info in our frame
             for (i, (k, v)) in enumerate(info):
                 text = "{}: {}".format(k, v)
                 cv2.putText(frame, text, (10, height - ((i * 20) + 20)),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
     def update(self, inputCentroids):
         self.objects = self.centroid_tracker.update(inputCentroids)
@@ -85,13 +116,16 @@ class Control:
     def results(self):
         entran = self.totalUp
         salen = self.totalDown
-        pasan = self.totalLeft - (entran + salen) if self.totalLeft - (entran + salen) > 0 else 0
-        tienda = 0  # TODO
+        pasan = (self.totalLeft + self.totalRight) - (entran) - salen - (self.stop) if (self.totalLeft + self.totalRight) - (entran) - salen - (self.stop)  > 0 else 0
+        tienda = self.stop
 
         self.totalLeft = 0
         self.totalUp = 0
         self.totalRight = 0
         self.totalDown = 0
+        self.totalLeft2 = 0
+        self.totalRight2 = 0
+        self.stop = 0
 
         return entran, salen, pasan, tienda
 
@@ -100,7 +134,16 @@ class TrackableObject:
     """
     Defines the attributes of an object, objectID, centroid and if it has been counted or not
     """
+
     def __init__(self, objectID, centroid):
         self.objectID = objectID
         self.centroids = [centroid]
         self.counted = False
+        self.rightCounted = False
+        self.leftCounted = False
+        self.secondLeftCounted = False
+        self.secondRightCounted = False
+        self.stopped = False
+        self.upCounted = False
+        self.downCounted = False
+        self.frameCount = 0

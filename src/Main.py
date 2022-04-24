@@ -1,6 +1,6 @@
-from src.Detection import Detection
-import src.Tools as tl
-from src.Control import Control
+from Detection import Detection
+import Tools as tl
+from Control import Control
 import cv2
 import os
 
