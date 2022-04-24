@@ -92,6 +92,21 @@ Se recomienda usar un visualizador de unittest como el de pycharm para una visua
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Despliegue
+Se ha empaquetado la solución para la correcta y simple ejecución por parte del cliente.
+
+1. Descargar la imagen del docker con el siguiente comando desde la consola de comandos (tanto en windows como linux)
+```sh
+docker pull carlossab/aiva_2022_grupod:latest
+```
+
+2. Ejecutar el contenedor (o imagen) y en << path >> poner la carpeta base donde se encuentra el video o videos a procesar.
+```sh
+docker run --name=ControlVisitantes -v <<path>>:/app/dataset_2 -e PYTHONUNBUFFERED=1 carlossab/aiva_2022_grupod:latest
+```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- ROADMAP -->
 ## Roadmap
 
