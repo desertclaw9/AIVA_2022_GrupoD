@@ -1,4 +1,4 @@
-from Centroidtracking import CentroidTracking
+from src.Centroidtracking import CentroidTracking
 import numpy as np
 import cv2
 

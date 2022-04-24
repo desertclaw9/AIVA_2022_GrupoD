@@ -1,6 +1,6 @@
-from Detection import Detection
-import Tools as tl
-from Control import Control
+from src.Detection import Detection
+import src.Tools as tl
+from src.Control import Control
 import cv2
 import os
 
@@ -20,16 +20,16 @@ def main():
             im, feets = detector.detect(im, paint=True)
             controller.update(feets)
             controller.counting(im, display=True)
-            cv2.imshow('frame', im)
-            key = cv2.waitKey(1) & 0xFF
-            if key == ord('n'):
-                break
-            elif key == ord('q'):
-                finish = True
-                break
+            # cv2.imshow('frame', im)
+            # key = cv2.waitKey(1) & 0xFF
+            # if key == ord('n'):
+            #     break
+            # elif key == ord('q'):
+            #     finish = True
+            #     break
         print('Entran %d\nSalen %d\nPasan %d\nEscaparate %d' % controller.results())
-        if finish:
-            exit(0)
+        # if finish:
+        #     exit(0)
 
 
 if __name__ == '__main__':
