@@ -15,7 +15,7 @@ def load_video(file):
             break
         else:
             h, w, dim = im.shape
-            cv2.line(im, (round(w / 2) + 20, round(h / 2) + 5), (w - 20, round(h / 2) + 5), (0, 255, 255), 2)
+            cv2.line(im, (round(w / 2) + 20, round(h / 2) - 5), (w - 20, round(h / 2) -5), (0, 255, 255), 2)
             cv2.line(im, (round(w / 2) + 20, round(h / 2) + 60), (round(w / 2) + 20, round(h / 2) + 5), (0, 255, 255),
                      2)
             cv2.line(im, (60, round(h / 2) + 60), (60, round(h / 2) + 5), (0, 255, 255), 2)
